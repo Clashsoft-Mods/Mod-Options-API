@@ -4,16 +4,13 @@ import clashsoft.clashsoftapi.ClashsoftAPI;
 import clashsoft.clashsoftapi.util.CSUpdate;
 import clashsoft.clashsoftapi.util.update.ModUpdate;
 import clashsoft.modoptionsapi.api.IOptionChangeListener;
-import clashsoft.modoptionsapi.api.OptionSheet;
 import clashsoft.modoptionsapi.api.option.Option;
 import clashsoft.modoptionsapi.api.option.OptionCategory;
-import clashsoft.modoptionsapi.gui.GuiModOptions;
 import clashsoft.modoptionsapi.lib.MOAPITickHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -28,24 +25,9 @@ public class ModOptionsAPI
 {
 	public static final int								REVISION				= 1;
 	public static final String							VERSION					= CSUpdate.CURRENT_VERSION + "-" + REVISION;
+	public static OptionCategory		rootCategory	= new OptionCategory("ROOT");
 	
 	// Mod stuff
-	
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
-		/* Example code on how to use the new OptionSheet system
-		 */ 
-		OptionSheet sheet = new OptionSheet("Mod Options API", event.getSuggestedConfigurationFile());
-		
-		//yourField = sheet.getString("Your Setting Name", "default value");
-		//yourField1 = sheet.getString("Your Second Setting Name", "default value", 13 (max length));
-		//yourField2 = sheet.getDouble("Your Third Setting Name", 13.5D, 0D, 20D);
-		
-		sheet.save();
-		
-		//*/
-	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event)
@@ -88,7 +70,7 @@ public class ModOptionsAPI
 	
 	private static OptionCategory getCategoryFromPath(String... path)
 	{
-		OptionCategory category = GuiModOptions.rootCategory;
+		OptionCategory category = ModOptionsAPI.rootCategory;
 		for (String s : path)
 		{
 			OptionCategory c = category.subCategorys.get(s);

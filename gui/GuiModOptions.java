@@ -3,6 +3,7 @@ package clashsoft.modoptionsapi.gui;
 import java.util.HashMap;
 import java.util.Map;
 
+import clashsoft.modoptionsapi.ModOptionsAPI;
 import clashsoft.modoptionsapi.api.option.OptionCategory;
 
 import net.minecraft.client.gui.GuiButton;
@@ -11,8 +12,6 @@ import net.minecraft.client.resources.I18n;
 
 public class GuiModOptions extends GuiScreen
 {
-	public static OptionCategory		rootCategory	= new OptionCategory("ROOT");
-	
 	protected GuiScreen					parent;
 	
 	public int							mouseX;
@@ -27,7 +26,7 @@ public class GuiModOptions extends GuiScreen
 	public String						subscreenTitle	= "";
 	public String						screenTitle		= "Mod Options";
 	
-	public OptionCategory				currentCategory	= rootCategory;
+	public OptionCategory				currentCategory	= ModOptionsAPI.rootCategory;
 	
 	public GuiModOptions(GuiScreen parent, String subscreenTitle)
 	{
@@ -112,7 +111,7 @@ public class GuiModOptions extends GuiScreen
 	{
 		currentCategory = category;
 		
-		if (currentCategory == rootCategory)
+		if (currentCategory == ModOptionsAPI.rootCategory)
 		{
 			this.subscreenTitle = "";
 			back.enabled = false;
@@ -134,7 +133,7 @@ public class GuiModOptions extends GuiScreen
 	
 	public boolean isSubscreen()
 	{
-		return currentCategory != rootCategory;
+		return currentCategory != ModOptionsAPI.rootCategory;
 	}
 	
 	public void addButton(String id, GuiButton button)
