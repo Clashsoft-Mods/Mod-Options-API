@@ -1,4 +1,4 @@
-package clashsoft.modoptionsapi.gui;
+package clashsoft.modoptionsapi.client.gui;
 
 import java.util.HashMap;
 import java.util.Map;

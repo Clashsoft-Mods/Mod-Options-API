@@ -1,12 +1,12 @@
 package clashsoft.modoptionsapi;
 
-import clashsoft.clashsoftapi.ClashsoftAPI;
-import clashsoft.clashsoftapi.util.CSUpdate;
-import clashsoft.clashsoftapi.util.update.ModUpdate;
+import clashsoft.cslib.minecraft.CSLib;
+import clashsoft.cslib.minecraft.update.CSUpdate;
+import clashsoft.cslib.minecraft.update.ModUpdate;
 import clashsoft.modoptionsapi.api.IOptionChangeListener;
 import clashsoft.modoptionsapi.api.option.Option;
 import clashsoft.modoptionsapi.api.option.OptionCategory;
-import clashsoft.modoptionsapi.lib.MOAPITickHandler;
+import clashsoft.modoptionsapi.handlers.MOAPITickHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -50,7 +50,7 @@ public class ModOptionsAPI
 	{
 		if (event.entity instanceof EntityPlayer)
 		{
-			ModUpdate update = CSUpdate.checkForUpdate("Mod Options API", "moapi", ClashsoftAPI.VERSION);
+			ModUpdate update = CSUpdate.checkForUpdate("Mod Options API", "moapi", CSLib.VERSION);
 			CSUpdate.notifyUpdate((EntityPlayer) event.entity, "Mod Options API", update);
 		}
 	}

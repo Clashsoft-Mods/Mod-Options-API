@@ -6,6 +6,8 @@ import clashsoft.modoptionsapi.api.IOptionChangeListener;
 public abstract class Option<T> implements IModOptionListEntry
 {
 	public String	name;
+	public String	comment;
+	public String	category;
 	public T		value;
 	public T		defaultValue;
 	
@@ -46,5 +48,17 @@ public abstract class Option<T> implements IModOptionListEntry
 	{
 		if (this.defaultValue != null)
 			this.setValue(defaultValue);
+	}
+	
+	public Option setComment(String comment)
+	{
+		this.comment = comment;
+		return this;
+	}
+	
+	public Option setCategory(String category)
+	{
+		this.category = category;
+		return this;
 	}
 }

@@ -1,4 +1,4 @@
-package clashsoft.modoptionsapi.gui;
+package clashsoft.modoptionsapi.client.gui;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;

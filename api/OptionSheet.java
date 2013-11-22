@@ -26,14 +26,17 @@ public class OptionSheet extends OptionCategory implements IOptionChangeListener
 	
 	public void addOption(Option option)
 	{
-		this.addOption_(option);
+		if (option != null)
+			option.listener = this;
+		this.getOption(option);
 	}
 	
-	public Option addOption_(Option option)
+	public Option getOption(Option option)
 	{
 		Option loadedOption = this.options.get(option.name);
 		if (loadedOption == null)
 		{
+			option.listener = this;
 			super.addOption(option);
 			return option;
 		}
@@ -81,7 +84,7 @@ public class OptionSheet extends OptionCategory implements IOptionChangeListener
 	
 	public boolean getBoolean(String name, boolean _default)
 	{
-		return ((OptionBoolean)this.addOption_(new OptionBoolean(name, _default, _default).setListener(this))).value;
+		return ((OptionBoolean)this.getOption(new OptionBoolean(name, _default, _default).setListener(this))).value;
 	}
 	
 	public String getString(String name, String _default)
@@ -91,7 +94,17 @@ public class OptionSheet extends OptionCategory implements IOptionChangeListener
 	
 	public String getString(String name, String _default, int maxLength)
 	{
-		return ((OptionString)this.addOption_(new OptionString(name, _default, _default, maxLength).setListener(this))).value;
+		return ((OptionString)this.getOption(new OptionString(name, _default, _default, maxLength).setListener(this))).value;
+	}
+	
+	public int getInt(String name, int _default)
+	{
+		return (int)getDouble(name, _default);
+	}
+	
+	public int getInt(String name, int _default, int minValue, int maxValue)
+	{
+		return (int)getDouble(name, _default, minValue, maxValue);
 	}
 	
 	public double getDouble(String name, double _default)
@@ -101,7 +114,7 @@ public class OptionSheet extends OptionCategory implements IOptionChangeListener
 	
 	public double getDouble(String name, double _default, double minValue, double maxValue)
 	{
-		return ((OptionNumber)this.addOption_(new OptionNumber(name, _default, _default, minValue, maxValue).setListener(this))).value;
+		return ((OptionNumber)this.getOption(new OptionNumber(name, _default, _default, minValue, maxValue).setListener(this))).value;
 	}
 	
 	public void load()
@@ -113,6 +126,7 @@ public class OptionSheet extends OptionCategory implements IOptionChangeListener
 		catch (IOException ex)
 		{
 			ex.printStackTrace();
+			lines = new ArrayList();
 		}
 		
 		for (String line : lines)

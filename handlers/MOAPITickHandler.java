@@ -1,8 +1,8 @@
-package clashsoft.modoptionsapi.lib;
+package clashsoft.modoptionsapi.handlers;
 
 import java.util.EnumSet;
 
-import clashsoft.modoptionsapi.gui.GuiMoreOptions;
+import clashsoft.modoptionsapi.client.gui.GuiMoreOptions;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 import cpw.mods.fml.relauncher.Side;
