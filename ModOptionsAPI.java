@@ -23,9 +23,10 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 @Mod(modid = "ModOptionsAPI", name = "Mod Options API", version = ModOptionsAPI.VERSION)
 public class ModOptionsAPI
 {
-	public static final int								REVISION				= 1;
-	public static final String							VERSION					= CSUpdate.CURRENT_VERSION + "-" + REVISION;
-	public static OptionCategory		rootCategory	= new OptionCategory("ROOT");
+	public static final int			REVISION		= 1;
+	public static final String		VERSION			= CSUpdate.CURRENT_VERSION + "-" + REVISION;
+	
+	public static OptionCategory	rootCategory	= new OptionCategory("ROOT");
 	
 	// Mod stuff
 	
