@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
+import clashsoft.cslib.util.CSLog;
 import clashsoft.modoptionsapi.ModOptionsAPI;
 import clashsoft.modoptionsapi.api.option.*;
 
@@ -125,7 +126,7 @@ public class OptionSheet extends OptionCategory implements IOptionChangeListener
 		}
 		catch (IOException ex)
 		{
-			ex.printStackTrace();
+			CSLog.error(ex);
 			lines = new ArrayList();
 		}
 		
@@ -175,7 +176,7 @@ public class OptionSheet extends OptionCategory implements IOptionChangeListener
 		}
 		catch (IOException ex)
 		{
-			ex.printStackTrace();
+			CSLog.error(ex);
 		}
 	}
 	
